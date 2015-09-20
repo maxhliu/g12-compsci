@@ -1,0 +1,29 @@
+//this is the manifest file
+//it tells chrome fundamental information about the extension such as:
+//permissions (the user needs to know what the program is capable of)
+//icons (the picture to display on the chrome toolbar)
+//name and versioning stuff (to keep track)
+//which file to run (your code)
+
+
+{
+  "manifest_version": 2,
+  "name": "Jurisprudence",
+  "description": "Make your life readable.",
+  "version": "1.0",
+
+  "browser_action": {
+    "default_icon": "icon.png"
+  },
+
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+
+  "permissions": [
+    "activeTab",
+	"http://*/*",
+	"https://*/*"
+  ]
+}

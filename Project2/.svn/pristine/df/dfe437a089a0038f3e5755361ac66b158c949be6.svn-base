@@ -1,0 +1,52 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package project2;
+
+import java.util.ArrayList;
+import java.util.Collections;
+
+/**
+ *
+ * @author Max
+ */
+public class SelectionSort extends Sort {
+
+    public static ArrayList<String> sort(ArrayList<String> list) {
+        System.err.println("working . . .");
+        long time = -System.currentTimeMillis();
+        list = theSort(list);
+        time += System.currentTimeMillis();
+
+        for (String string : list) {
+            System.err.println(string);
+        }
+        System.err.println("The sort took " + (time) + " milliseconds to complete.");
+        System.err.flush();
+        if (!isSorted(list)) {
+            throw new ArithmeticException();
+        }
+        return list;
+    }
+
+    public static ArrayList<String> theSort(ArrayList<String> list) {
+//        counter for the outer loop cycle, the one which places the smallest string in the right position
+        int a;
+//        counter for the inner loop cycle, the one which finds the smallest string
+        int b;
+//        the index of said smallest string
+        int smallestIndex;
+        for (a = 0; a < list.size() - 1; a++) {
+            smallestIndex = a;
+            for (b = a+1; b < list.size(); b++) {
+                if (list.get(smallestIndex).compareTo(list.get(b)) > 0) {
+                    smallestIndex = b;
+                }
+            }
+//            swap the smallest element with the element at its correct position
+            Collections.swap(list, smallestIndex, a);
+        }
+        return list;
+    }
+}

@@ -1,0 +1,27 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package project2;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Project2 {
+
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        ArrayList<String> words = new ArrayList<>();
+        String input = s.next();
+        while (!("STAHP".equals(input))) {
+            words.add(input.replaceAll("\\W", "").toLowerCase());
+            input = s.next();
+        }
+        ArrayList<String> copy = new ArrayList<>(words);
+//        SelectionSort.sort(words);
+//        BogoSort.sort(words);
+//        MergeSort.sort(copy);
+//        TimSort.sort(copy);
+        InsertionSort.sort(copy);
+    }
+}

@@ -1,0 +1,46 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editofr.
+ */
+package project4;
+
+/**
+ *
+ * @author Max
+ */
+public class Sticker {
+    private Code location;
+    private char value;
+    Sticker(Code a, char b) {
+        location = a;
+        value = b;
+    }
+
+    /**
+     * @return the location
+     */
+    public Code getLocation() {
+        return location;
+    }
+
+    /**
+     * @param location the location to set
+     */
+    public void setLocation(Code location) {
+        this.location = location;
+    }
+
+    /**
+     * @return the value
+     */
+    public char getValue() {
+        return value;
+    }
+
+    /**
+     * @param value the value to set
+     */
+    public void setValue(char value) {
+        this.value = value;
+    }
+}

@@ -1,0 +1,45 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package project4;
+
+/**
+ *
+ * @author Max
+ */
+public class Constants {
+
+    public static final String edgePairs = "001521 \n"
+            + "012301 \n"
+            + "021201 \n"
+            + "010101 \n"
+            + "110510 \n"
+            + "112210 \n"
+            + "212310 \n"
+            + "312512 \n"
+            + "121410 \n"
+            + "221401 \n"
+            + "321412 \n"
+            + "421501 \n";
+    public static final String cornerSets = "102200020\n"
+            + "202022300\n"
+            + "222320402\n"
+            + "220400122\n"
+            + "420500120\n"
+            + "422502322\n"
+            + "100520000\n"
+            + "002302522";
+    public static final String defCube = "      r r r\n"
+            + "      r r r\n"
+            + "      r r r\n"
+            + "b b b w w w g g g\n"
+            + "b b b w w w g g g\n"
+            + "b b b w w w g g g\n"
+            + "      o o o\n"
+            + "      o o o\n"
+            + "      o o o\n"
+            + "      y y y\n"
+            + "      y y y\n"
+            + "      y y y";
+}

@@ -1,0 +1,149 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package project3;
+
+/**
+ *
+ * @author Max
+ */
+public class Cube {
+
+    static char[][][] cube;
+
+    Cube() {
+        cube = new char[6][3][3];
+    }
+
+    static void input(Code a, char colour) {
+        cube[a.getA()][a.getB()][a.getC()] = colour;
+    }
+
+    static void rotate(Code a, Code b, Code c, Code d) {
+        char temp = cube[a.getA()][a.getB()][a.getC()];
+        cube[a.getA()][a.getB()][a.getC()] = cube[b.getA()][b.getB()][b.getC()];
+        cube[b.getA()][b.getB()][b.getC()] = cube[c.getA()][c.getB()][c.getC()];
+        cube[c.getA()][c.getB()][c.getC()] = cube[d.getA()][d.getB()][d.getC()];
+        cube[d.getA()][d.getB()][d.getC()] = temp;
+    }
+
+    //for simplicity's sake
+    static void antirotate(Code a, Code b, Code c, Code d) {
+        rotate(a, b, c, d);
+        rotate(a, b, c, d);
+        rotate(a, b, c, d);
+    }
+
+    static void rotateFace(int n) {
+        char temp = cube[n][0][0];
+        cube[n][0][0] = cube[n][0][1];
+        cube[n][0][1] = cube[n][0][2];
+        cube[n][0][2] = cube[n][1][2];
+        cube[n][1][2] = cube[n][2][2];
+        cube[n][2][2] = cube[n][2][1];
+        cube[n][2][1] = cube[n][2][0];
+        cube[n][2][0] = cube[n][1][0];
+        cube[n][1][0] = temp;
+    }
+    
+    static void antirotateFace(int n) {
+        rotateFace(n);
+        rotateFace(n);
+        rotateFace(n);
+    }
+
+    static void print() {
+        printFace(0, 6);
+//        printFace(1,2);
+        printThreeFaces(1);
+        printFace(4, 6);
+        printFace(5, 6);
+    }
+
+    static void printFace(int i, int indent) {
+        for (int b = 0; b < 3; b++) {
+            for (int a = 0; a < indent; a++) {
+                System.out.print(" ");
+            }
+            for (int c = 0; c < 3; c++) {
+                System.out.print(cube[i][b][c] + " ");
+            }
+            System.out.println("");
+        }
+    }
+
+    static void printThreeFaces(int i) {
+        for (int b = 0; b < 3; b++) {
+            for (int c = 0; c < 3; c++) {
+                System.out.print(cube[i][b][c] + " ");
+            }
+            for (int c = 0; c < 3; c++) {
+                System.out.print(cube[i + 1][b][c] + " ");
+            }
+            for (int c = 0; c < 3; c++) {
+                System.out.print(cube[i + 2][b][c] + " ");
+            }
+            System.out.println("");
+        }
+    }
+
+    static void move(char code) {
+        switch (code) {
+            case 'L':
+                Cube.rotate(new Code(0, 0, 0), new Code(2, 0, 0), new Code(4, 0, 0), new Code(5, 0, 0));
+                Cube.rotate(new Code(0, 1, 0), new Code(2, 1, 0), new Code(4, 1, 0), new Code(5, 1, 0));
+                Cube.rotate(new Code(0, 2, 0), new Code(2, 2, 0), new Code(4, 2, 0), new Code(5, 2, 0));
+                Cube.rotateFace(1);
+                Cube.rotate(new Code(0, 0, 0), new Code(2, 0, 0), new Code(4, 0, 0), new Code(5, 0, 0));
+                Cube.rotate(new Code(0, 1, 0), new Code(2, 1, 0), new Code(4, 1, 0), new Code(5, 1, 0));
+                Cube.rotate(new Code(0, 2, 0), new Code(2, 2, 0), new Code(4, 2, 0), new Code(5, 2, 0));
+                Cube.rotateFace(1);
+            case 'l':
+                Cube.rotate(new Code(0, 0, 0), new Code(2, 0, 0), new Code(4, 0, 0), new Code(5, 0, 0));
+                Cube.rotate(new Code(0, 1, 0), new Code(2, 1, 0), new Code(4, 1, 0), new Code(5, 1, 0));
+                Cube.rotate(new Code(0, 2, 0), new Code(2, 2, 0), new Code(4, 2, 0), new Code(5, 2, 0));
+                Cube.rotateFace(1);
+                break;
+            case 'r':
+                Cube.rotate(new Code(0, 0, 2), new Code(2, 0, 2), new Code(4, 0, 2), new Code(5, 0, 2));
+                Cube.rotate(new Code(0, 1, 2), new Code(2, 1, 2), new Code(4, 1, 2), new Code(5, 1, 2));
+                Cube.rotate(new Code(0, 2, 2), new Code(2, 2, 2), new Code(4, 2, 2), new Code(5, 2, 2));
+                Cube.antirotateFace(3);
+                Cube.rotate(new Code(0, 0, 2), new Code(2, 0, 2), new Code(4, 0, 2), new Code(5, 0, 2));
+                Cube.rotate(new Code(0, 1, 2), new Code(2, 1, 2), new Code(4, 1, 2), new Code(5, 1, 2));
+                Cube.rotate(new Code(0, 2, 2), new Code(2, 2, 2), new Code(4, 2, 2), new Code(5, 2, 2));
+                Cube.antirotateFace(3);
+            case 'R':
+                Cube.rotate(new Code(0, 0, 2), new Code(2, 0, 2), new Code(4, 0, 2), new Code(5, 0, 2));
+                Cube.rotate(new Code(0, 1, 2), new Code(2, 1, 2), new Code(4, 1, 2), new Code(5, 1, 2));
+                Cube.rotate(new Code(0, 2, 2), new Code(2, 2, 2), new Code(4, 2, 2), new Code(5, 2, 2));
+                Cube.antirotateFace(3);
+                break;
+            case 'u':
+                Cube.rotate(new Code(0, 2, 0), new Code(1, 2, 2), new Code(4, 0, 2), new Code(3, 0, 0));
+                Cube.rotate(new Code(0, 2, 1), new Code(1, 1, 2), new Code(4, 0, 1), new Code(3, 1, 0));
+                Cube.rotate(new Code(0, 2, 2), new Code(1, 0, 2), new Code(4, 0, 0), new Code(3, 2, 0));
+                Cube.rotate(new Code(0, 2, 0), new Code(1, 2, 2), new Code(4, 0, 2), new Code(3, 0, 0));
+                Cube.rotate(new Code(0, 2, 1), new Code(1, 1, 2), new Code(4, 0, 1), new Code(3, 1, 0));
+                Cube.rotate(new Code(0, 2, 2), new Code(1, 0, 2), new Code(4, 0, 0), new Code(3, 2, 0));
+            case 'U':
+                Cube.rotate(new Code(0, 2, 0), new Code(1, 2, 2), new Code(4, 0, 2), new Code(3, 0, 0));
+                Cube.rotate(new Code(0, 2, 1), new Code(1, 1, 2), new Code(4, 0, 1), new Code(3, 1, 0));
+                Cube.rotate(new Code(0, 2, 2), new Code(1, 0, 2), new Code(4, 0, 0), new Code(3, 2, 0));
+                break;
+            case 'd':
+                Cube.rotate(new Code(0, 2, 0), new Code(1, 2, 2), new Code(4, 0, 2), new Code(3, 0, 0));
+                Cube.rotate(new Code(0, 2, 1), new Code(1, 1, 2), new Code(4, 0, 1), new Code(3, 1, 0));
+                Cube.rotate(new Code(0, 2, 2), new Code(1, 0, 2), new Code(4, 0, 0), new Code(3, 2, 0));
+                Cube.rotate(new Code(0, 2, 0), new Code(1, 2, 2), new Code(4, 0, 2), new Code(3, 0, 0));
+                Cube.rotate(new Code(0, 2, 1), new Code(1, 1, 2), new Code(4, 0, 1), new Code(3, 1, 0));
+                Cube.rotate(new Code(0, 2, 2), new Code(1, 0, 2), new Code(4, 0, 0), new Code(3, 2, 0));
+            case 'D':
+                Cube.rotate(new Code(0, 2, 0), new Code(1, 2, 2), new Code(4, 0, 2), new Code(3, 0, 0));
+                Cube.rotate(new Code(0, 2, 1), new Code(1, 1, 2), new Code(4, 0, 1), new Code(3, 1, 0));
+                Cube.rotate(new Code(0, 2, 2), new Code(1, 0, 2), new Code(4, 0, 0), new Code(3, 2, 0));
+                break;
+        }
+    }
+}

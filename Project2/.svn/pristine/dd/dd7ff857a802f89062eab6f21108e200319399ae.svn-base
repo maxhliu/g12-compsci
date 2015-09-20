@@ -1,0 +1,64 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package project2;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ *
+ * @author Max
+ */
+public class RadixSort extends Sort {
+
+    public static ArrayList sort(ArrayList<String> list) {
+        System.err.println("working . . .");
+        long time = -System.currentTimeMillis();
+        list = theSort(list);
+        time += System.currentTimeMillis();
+
+        for (String string : list) {
+            System.err.println(string);
+        }
+        System.err.println("The sort took " + (time) + " milliseconds to complete.");
+        System.err.flush();
+        if (!isSorted(list)) {
+            throw new ArithmeticException();
+        }
+        return list;
+    }
+
+    public static ArrayList<String> theSort(List<String> list) {
+        ArrayList<ArrayList<String>> buckets = new ArrayList<>(26);
+        for (ArrayList<String> i : buckets) {
+            i = new ArrayList<>();
+        }
+        boolean tooBig = false;
+        int index = 0;
+        while (!tooBig) {
+            tooBig = true;
+            for (String word : list) {
+                if (index < word.length()) {
+                    buckets.get((int) word.charAt(index) - 'a').add(word);
+                } else {
+                    buckets.get(0).add(word);
+                }
+                if (tooBig/*&&tmp >0*/) {
+                    //insert continue code here, if only one runs, contineu
+                }
+            }
+            //combine all the buckets and place it into list
+            list.clear();
+            for (ArrayList<String> i : buckets) {
+                for (String word : i) {
+                    list.add(word);
+                }
+                i.clear();
+            }
+            index++;
+        }
+        return (ArrayList) list;
+    }
+}

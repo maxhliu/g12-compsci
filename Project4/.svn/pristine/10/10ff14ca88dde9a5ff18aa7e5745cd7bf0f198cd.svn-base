@@ -1,0 +1,16 @@
+Sample Rubik's cube template
+      r r r
+      r r r
+      r r r
+b b b w w w g g g
+b b b w w w g g g
+b b b w w w g g g
+      o o o
+      o o o
+      o o o
+      y y y
+      y y y
+      y y y
+
+This is what a solved Rubik's cube should look like in net form.
+Entered colors must include spaces.

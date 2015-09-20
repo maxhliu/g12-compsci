@@ -1,0 +1,110 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package project4;
+
+import java.util.ArrayList;
+
+/**
+ *
+ * @author Max
+ */
+public class Corner {
+    private Sticker a;
+    private Sticker b;
+    private Sticker c;
+    Corner(Sticker a, Sticker b, Sticker c) {
+        this.a = a;
+        this.b = b;
+        this.c = c;
+    }
+
+    /**
+     * @return the a
+     */
+    public Sticker getA() {
+        return a;
+    }
+
+    /**
+     * @param a the a to set
+     */
+    public void setA(Sticker a) {
+        this.a = a;
+    }
+
+    /**
+     * @return the b
+     */
+    public Sticker getB() {
+        return b;
+    }
+
+    /**
+     * @param b the b to set
+     */
+    public void setB(Sticker b) {
+        this.b = b;
+    }
+
+    /**
+     * @return the c
+     */
+    public Sticker getC() {
+        return c;
+    }
+
+    /**
+     * @param c the c to set
+     */
+    public void setC(Sticker c) {
+        this.c = c;
+    }
+    
+    public Code findValue(char v) {
+        if (a.getValue() == v) {
+            return a.getLocation();
+        } else if (b.getValue() == v) {
+            return b.getLocation();
+        } else if (c.getValue() == v) {
+            return c.getLocation();
+        } else {
+            return null;
+        }
+    }
+    public Code getOthers1(char v) {
+        if (a.getValue() == v) {
+            return b.getLocation();
+        } else if (b.getValue() == v) {
+            return c.getLocation();
+        } else if (c.getValue() == v) {
+            return a.getLocation();
+        } else {
+            return null;
+        }
+    }
+    public Code getOthers2(char v) {
+        if (a.getValue() == v) {
+            return c.getLocation();
+        } else if (b.getValue() == v) {
+            return a.getLocation();
+        } else if (c.getValue() == v) {
+            return b.getLocation();
+        } else {
+            return null;
+        }
+    }
+    public boolean compare(Corner comparing) {
+        ArrayList <Character> comparator = new ArrayList();
+        comparator.add(comparing.getA().getValue());
+        comparator.add(comparing.getB().getValue());
+        comparator.add(comparing.getC().getValue());
+        ArrayList <Character> corner = new ArrayList();
+        corner.add(this.getA().getValue());
+        corner.add(this.getB().getValue());
+        corner.add(this.getC().getValue());
+        return corner.containsAll(comparator);
+    }
+    
+}

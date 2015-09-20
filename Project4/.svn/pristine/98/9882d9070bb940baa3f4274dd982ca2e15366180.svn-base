@@ -1,0 +1,84 @@
+/*
+ * A wrapper class for a three-dimensional co-ordinate. This could have been replaced with a three-digit number, but I felt that it was more clear this way.
+ */
+package project4;
+
+/**
+ *
+ * @author Max
+ */
+public class Code {
+
+    //have three integer variables to store the x,y,and z values.
+    public int a;
+    public int b;
+    public int c;
+
+    Code(int a, int b, int c) {
+        this.a = a;
+        this.b = b;
+        this.c = c;
+    }
+
+    Code(int abc) {
+        c = abc % 10;
+        abc /= 10;
+        b = abc % 10;
+        abc /= 10;
+        a = abc;
+    }
+
+    /**
+     * @return the a
+     */
+    public int getA() {
+        return a;
+    }
+
+    /**
+     * @param a the a to set
+     */
+    public void setA(int a) {
+        this.a = a;
+    }
+
+    /**
+     * @return the b
+     */
+    public int getB() {
+        return b;
+    }
+
+    /**
+     * @param b the b to set
+     */
+    public void setB(int b) {
+        this.b = b;
+    }
+
+    /**
+     * @return the c
+     */
+    public int getC() {
+        return c;
+    }
+
+    /**
+     * @param c the c to set
+     */
+    public void setC(int c) {
+        this.c = c;
+    }
+
+    public void set(int abc) {
+        c = abc % 10;
+        abc /= 10;
+        b = abc % 10;
+        abc /= 10;
+        a = abc;
+    }
+
+    public boolean compare(Code a) {
+        return (a.getA() == this.a && a.getB() == this.b && a.getC() == this.c);
+    }
+}
